@@ -1,3 +1,5 @@
+#![no_std]
+
 pub use bits::U8Iterator;
 pub use color::Color;
 pub use color::ColorIterator;
