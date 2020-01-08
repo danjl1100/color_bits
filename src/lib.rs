@@ -126,23 +126,23 @@ pub mod color {
     }
     impl Color {
         /// Constructs a new color for the given `red`, `green`, and `blue` components.
-        pub fn new(red: u8, green: u8, blue: u8) -> Color {
+        pub fn rgb(red: u8, green: u8, blue: u8) -> Color {
             Color { red, green, blue }
         }
         /// ```
         /// use color_bits::Color;
-        /// let black = Color::new(0, 0, 0);
+        /// let black = Color::rgb(0, 0, 0);
         /// let iter = black.into_iter_gbr();
         /// let bits = iter.collect::<Vec<bool>>();
         /// assert_eq!(bits, [false; 24]);
         /// // implements Copy
         /// let arr = [black, black, black];
         /// //
-        /// let white = Color::new(255, 255, 255);
+        /// let white = Color::rgb(255, 255, 255);
         /// let bits = white.into_iter_gbr().collect::<Vec<bool>>();
         /// assert_eq!(bits, [true; 24]);
         /// //
-        /// let pink = Color::new(255, 0b1010_1010, 0b1110_0001);
+        /// let pink = Color::rgb(255, 0b1010_1010, 0b1110_0001);
         /// let mut iter = pink.into_iter_gbr();
         /// for _ in 0..=3 { //green
         ///     assert_eq!(iter.next(), Some(true));
