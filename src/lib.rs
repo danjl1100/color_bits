@@ -64,8 +64,7 @@ pub mod bits {
             iter
         }
     }
-    impl Iterator for U8Iterator
-    {
+    impl Iterator for U8Iterator {
         type Item = bool;
         /// Returns bits of the `u8` value from MSB to LSB, outputting one `bool` for each bit.
         /// ```
@@ -118,6 +117,7 @@ pub mod color {
     use super::U8Iterator;
     use core::marker::PhantomData;
     use Component::*;
+    #[derive(Clone, Copy)]
     /// 24-bit representation of red, green, and blue color components.
     pub struct Color {
         pub green: u8,
@@ -135,6 +135,8 @@ pub mod color {
         /// let iter = black.into_iter_gbr();
         /// let bits = iter.collect::<Vec<bool>>();
         /// assert_eq!(bits, [false; 24]);
+        /// // implements Copy
+        /// let arr = [black, black, black];
         /// //
         /// let white = Color::new(255, 255, 255);
         /// let bits = white.into_iter_gbr().collect::<Vec<bool>>();
